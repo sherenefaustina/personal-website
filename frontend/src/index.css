@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-ink font-body;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(232, 130, 106, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(122, 158, 126, 0.06) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='0.8' fill='%23C9A84C' fill-opacity='0.12'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    @apply bg-rose-soft text-ink;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cream-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-rose-accent rounded-full;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply font-display text-4xl md:text-5xl text-ink font-bold leading-tight;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-medium bg-cream-200 text-ink-soft border border-cream-200 hover:border-rose-accent transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-white/70 backdrop-blur-sm rounded-2xl border border-cream-200 shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-ink text-cream-50 rounded-full font-body font-medium text-sm hover:bg-ink-soft transition-all duration-300 hover:gap-3;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-ink text-ink rounded-full font-body font-medium text-sm hover:bg-ink hover:text-cream-50 transition-all duration-300;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-ink-muted hover:text-ink transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-rose-accent after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #E8826A 0%, #C9A84C 50%, #7A9E7E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, #1A1614 0%, #E8826A 30%, #C9A84C 60%, #1A1614 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
